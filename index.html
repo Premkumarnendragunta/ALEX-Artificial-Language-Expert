@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ALEX</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styleai.css' %}"> 
+</head>
+<body>
+  <div class="container">
+    <h1>ALEX</h1>
+    <form method="POST" action="{% url "ai_response"%}">
+      {% csrf_token %}
+      <label for="x-input">Ask Me Anything.....</label>
+      <input type="text" id="x-input" name="x">
+      <button type="submit">Submit</button>
+      <br>
+    </form>
+    {% if response %}
+      <div>{{ response|linebreaksbr }}</div>
+    {% endif %}
+    <div id="output"></div> 
+  </div>
+</body>
+</html>
